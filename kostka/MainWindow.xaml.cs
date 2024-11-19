@@ -12,7 +12,7 @@ using System.Resources;
 
 namespace kostka
 {
-    class GrawKosci
+    class GrawKosci//
     {
         public static int ILOSC_KOSCI = 6;
         public static int ILOSC_SCIAN_KOSCI = 6;
