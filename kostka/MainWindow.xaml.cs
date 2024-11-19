@@ -14,7 +14,7 @@ namespace kostka
 {
     class GrawKosci
     {
-        public static int ILOSC_KOSCI = 5;
+        public static int ILOSC_KOSCI = 6;
         public static int ILOSC_SCIAN_KOSCI = 6;
         public static int ILOSC_NIEZNANA = -1;
         public static string WYNIK_GRY = "Wynik gry: ";
