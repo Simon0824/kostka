@@ -34,8 +34,8 @@ namespace kostka
                 rzuty[i] = random.Next(1, scianyilosc + 1);
                 kosteczkiwynik.Children.Add(wyswietlaniezdjec(rzuty[i]));
             }
-            Dictionary <int, int> powtorzenia = new Dictionary<int, int>();
-            foreach(int rzut in rzuty)
+            Dictionary<int, int> powtorzenia = new Dictionary<int, int>();
+            foreach (int rzut in rzuty)
             {
                 if (powtorzenia.ContainsKey(rzut))
                     powtorzenia[rzut]++;
@@ -43,7 +43,7 @@ namespace kostka
                     powtorzenia[rzut] = 1;
             }
             int rzutywynik = 0;
-            foreach(var rzucik in powtorzenia)
+            foreach (var rzucik in powtorzenia)
             {
                 if (rzucik.Value > 1)
                     rzutywynik += rzucik.Key * rzucik.Value;
@@ -57,21 +57,22 @@ namespace kostka
         private void ResetGry(object sender, RoutedEventArgs e)
         {
             wynikrzutu.Text = "0";
-            wynikogolny.Text="0";
-            kostki .Value = 0;
+            wynikogolny.Text = "0";
+            kostki.Value = 0;
             sciany.Value = 0;
             kosteczkiwynik.Children.Clear();
         }
 
         private Image wyswietlaniezdjec(int wartosc)
         {
-            return new Image
+            if (sciany.Value >3 || sciany.Value <11)
             {
-                Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Resource/plik{wartosc}.jfif")),
-                Width = 40,
-                Height = 40,
-                Margin = new Thickness(5)
-            };
-            }
+                return new Image
+                {
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri())
+                };
+                    }
+
+                }
     }
-    }
+}
