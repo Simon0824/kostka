@@ -45,7 +45,11 @@ namespace kostka
 
         private void ResetGry(object sender, RoutedEventArgs e)
         {
-
+            wynikrzutu.Text = "0";
+            wynikogolny.Text="0";
+            kostki .Value = 0;
+            sciany.Value = 0;
+            kosteczkiwynik.Children.Clear();
         }
 
         private Image wyswietlaniezdjec(int wartosc)
