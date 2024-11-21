@@ -56,6 +56,10 @@ namespace kostka
         {
             return new Image
             {
+                Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Resource/plik{wartosc}.jfif")),
+                Width = 40,
+                Height = 40,
+                Margin = new Thickness(5)
             };
             }
     }

@@ -8,4 +8,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resource\plik1.jfif" />
+    <None Remove="Resource\plik10.jfif" />
+    <None Remove="Resource\plik2.jfif" />
+    <None Remove="Resource\plik3.jfif" />
+    <None Remove="Resource\plik4.jfif" />
+    <None Remove="Resource\plik5.jfif" />
+    <None Remove="Resource\plik6.jfif" />
+    <None Remove="Resource\plik7.jfif" />
+    <None Remove="Resource\plik8.jfif" />
+    <None Remove="Resource\plik9.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\plik1.jfif" />
+    <Resource Include="Resource\plik10.jfif" />
+    <Resource Include="Resource\plik2.jfif" />
+    <Resource Include="Resource\plik3.jfif" />
+    <Resource Include="Resource\plik4.jfif" />
+    <Resource Include="Resource\plik5.jfif" />
+    <Resource Include="Resource\plik6.jfif" />
+    <Resource Include="Resource\plik7.jfif" />
+    <Resource Include="Resource\plik8.jfif" />
+    <Resource Include="Resource\plik9.jfif" />
+  </ItemGroup>
+
 </Project>
