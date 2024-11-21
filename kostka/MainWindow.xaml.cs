@@ -18,6 +18,12 @@ namespace kostka
         public MainWindow()
         {
             InitializeComponent();
+            int kostkailosc = (int)kostki.Value;
+            int scianyilosc = (int)sciany.Value;
+            if (kostkailosc == 1 || scianyilosc == 4)
+            {
+                kosteczkiwynik.Children.Add(WyswietlDomyslnyKwadrat());
+            }
             kostki.ValueChanged += (s, e) => ilosckostek.Text = ((int)kostki.Value).ToString();
             sciany.ValueChanged += (s, e) => iloscscian.Text = ((int)sciany.Value).ToString();
         }
@@ -26,13 +32,15 @@ namespace kostka
         {
             int kostkailosc = (int)kostki.Value;
             int scianyilosc = (int)sciany.Value;
+
+
             kosteczkiwynik.Children.Clear();
             Random random = new Random();
-            int[] rzuty = new int[scianyilosc];
-            for (int i = 0; i < scianyilosc; i++)
+            int[] rzuty = new int[kostkailosc];
+            for (int i = 0; i < kostkailosc; i++)
             {
-                rzuty[i] = random.Next(1, scianyilosc + 1);
-                kosteczkiwynik.Children.Add(wyswietlaniezdjec(rzuty[i]));
+                rzuty[i] = random.Next(1, kostkailosc + 1);
+                kosteczkiwynik.Children.Add(Wyswietlaniezdjec(rzuty[i]));
             }
             Dictionary<int, int> powtorzenia = new Dictionary<int, int>();
             foreach (int rzut in rzuty)
@@ -63,19 +71,26 @@ namespace kostka
             kosteczkiwynik.Children.Clear();
         }
 
-        private Image wyswietlaniezdjec(int wartosc)
+        private Image Wyswietlaniezdjec(int wartosc)
         {
-            if (sciany.Value >3 || sciany.Value <11)
-            {
                 return new Image
                 {
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,//Resource/plik{wartosc}.jpg")),
+                    Source = new BitmapImage(new Uri($"pack://application:,,,/Resource/plik{wartosc}.jfif")),
                     Width = 40,
                     Height = 40,
                     Margin = new Thickness(5)
                 };
-                    }
+        }
+        private Image WyswietlDomyslnyKwadrat()
+        {
+            return new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/Resource/pliknieznany.jpg")),
+                Width = 40,
+                Height = 40,
+                Margin = new Thickness(5)
+            };
+        }
 
-                }
     }
-}
+    }

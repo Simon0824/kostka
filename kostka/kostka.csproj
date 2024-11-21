@@ -19,6 +19,7 @@
     <None Remove="Resource\plik7.jfif" />
     <None Remove="Resource\plik8.jfif" />
     <None Remove="Resource\plik9.jfif" />
+    <None Remove="Resource\pliknieznany.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +33,7 @@
     <Resource Include="Resource\plik7.jfif" />
     <Resource Include="Resource\plik8.jfif" />
     <Resource Include="Resource\plik9.jfif" />
+    <Resource Include="Resource\pliknieznany.jpg" />
   </ItemGroup>
 
 </Project>
