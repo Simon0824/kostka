@@ -44,7 +44,7 @@ namespace kostka
         }
 
         private void ResetGry(object sender, RoutedEventArgs e)
-        {
+        {//
             wynikrzutu.Text = "0";
             wynikogolny.Text="0";
             kostki .Value = 0;
