@@ -12,102 +12,47 @@ using System.Resources;
 
 namespace kostka
 {
-    class GrawKosci//
-    {
-        public static int ILOSC_KOSCI = 6;
-        public static int ILOSC_SCIAN_KOSCI = 6;
-        public static int ILOSC_NIEZNANA = -1;
-        public static string WYNIK_GRY = "Wynik gry: ";
-        public static string WYNIK_LOSOWANIA = "Wynik tego losowania: ";
-        public static string PLIK_KOSCI_JEDEN = "\\plik1.jpg";
-        public static string PLIK_KOSCI_DWA = "\\plik2.jpg";
-        public static string PLIK_KOSCI_TRZY = "\\plik3.jpg";
-        public static string PLIK_KOSCI_CZTERY = "\\plik4.jpg";
-        public static string PLIK_KOSCI_PIEC = "\\plik5.jpg";
-        public static string PLIK_KOSCI_SZESC = "\\plik6.jpg";
-        public static string PLIK_KOSCI_NIEZNANY = "\\pliknieznany.jpg";
-        private int[] TablicaPowtorzen;
-        public int[] TablicaWynikow;
-        public int iloscPunktow { get; set; }
-        public int iloscPunktowCalaGra { get; set; }
-
-        public GrawKosci()
-        {
-            iloscPunktow = 0;
-            iloscPunktowCalaGra = 0;
-            TablicaPowtorzen = new int[ILOSC_SCIAN_KOSCI + 1];
-            TablicaWynikow = new int[ILOSC_KOSCI];
-        }
-
-        private int losujpojedynczy()
-        {
-            Random losowa = new Random();
-            return losowa.Next(1, ILOSC_SCIAN_KOSCI + 1);
-        }
-
-        private void obliczwyniki(int[] tablicarzutow)
-        {
-            iloscPunktow = 0;
-            for (int i = 1; i < ILOSC_SCIAN_KOSCI + 1; i++)
-            {
-                if (tablicarzutow[i] > 1)
-                {
-                    iloscPunktow += tablicarzutow[i] = i;
-                }
-            }
-            iloscPunktowCalaGra += iloscPunktow;
-        }
-
-        public void losujWszystko()
-        {
-            for (int i = 0; i < ILOSC_SCIAN_KOSCI; i++)
-            {
-                TablicaPowtorzen[i] = 0;
-            }
-
-            for(int i = 0; i< ILOSC_KOSCI; i++)
-            {
-                TablicaWynikow[i] = losujpojedynczy();
-                TablicaPowtorzen[TablicaWynikow[i]]++;
-            }
-            obliczwyniki(TablicaPowtorzen);
-        }
-
-        public BitmapImage wyswietlObraz(int iloscOczek)
-        {
-            string sciezka;
-            switch (iloscOczek)
-            {
-                case 1:
-                    sciezka = PLIK_KOSCI_JEDEN;
-                    break;
-                case 2:
-                    sciezka = PLIK_KOSCI_DWA;
-                    break;
-                case 3:
-                    sciezka = PLIK_KOSCI_TRZY;
-                    break;
-                case 4:
-                    sciezka = PLIK_KOSCI_CZTERY;
-                    break;
-                case 5:
-                    sciezka = PLIK_KOSCI_PIEC;
-                    break;
-                case 6:
-                    sciezka = PLIK_KOSCI_SZESC;
-                    break;
-                default:
-                    sciezka = PLIK_KOSCI_NIEZNANY;
-                    break;
-            }
-            return;
-        }
-    }
     public partial class MainWindow : Window
     {
+        private int ogolnywynik = 0;
         public MainWindow()
         {
             InitializeComponent();
+            kostki.ValueChanged += (s, e) => ilosckostek.Text = ((int)kostki.Value).ToString();
+            sciany.ValueChanged += (s, e) => iloscscian.Text = ((int)sciany.Value).ToString();
         }
+
+        private void Rzut(object sender, RoutedEventArgs e)
+        {
+            int kostkailosc = (int)kostki.Value;
+            int scianyilosc = (int)sciany.Value;
+            kosteczkiwynik.Children.Clear();
+            Random random = new Random();
+            int[] rzuty = new int[scianyilosc];
+            for (int i = 0; i < scianyilosc; i++)
+            {
+                rzuty[i] = random.Next(1, scianyilosc + 1);
+                kosteczkiwynik.Children.Add(wyswietlaniezdjec(rzuty[i]));
+            }
+
+            int rzutywynik = rzuty.Sum();
+
+            wynikrzutu.Text = rzutywynik.ToString();
+            ogolnywynik += rzutywynik;
+            wynikogolny.Text = ogolnywynik.ToString();
+
+        }
+
+        private void ResetGry(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private Image wyswietlaniezdjec(int wartosc)
+        {
+            return new Image
+            {
+            };
+            }
     }
-}
+    }

@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#F5F5DC">
+        
+        
         <TextBlock Margin="0,0,0,20" Text="Gra w kości Autor: Szymon Szostek" TextAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#A52A2A"></TextBlock>
-        <Button Height="50" Width="150" Content="Resetuj" FontWeight="Bold" Background="#D2691E" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,339,0,0"></Button>
-        <Button Height="50" Width="150" Content="Rzuć kostką" FontWeight="Bold" Background="#D2691E" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,339,208,0"></Button>
+        
+        <Button Height="50" Width="150" Content="Resetuj" FontWeight="Bold" Background="#D2691E" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,339,0,0" Click="ResetGry"></Button>
+        
+        <Button Height="50" Width="150" Content="Rzuć kostką" FontWeight="Bold" Background="#D2691E" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,339,208,0" Click="Rzut"></Button>
         
         <StackPanel HorizontalAlignment="Left" Margin="25,33,0,0">
             <TextBlock Text="ilość kostek" />
@@ -19,7 +23,7 @@
         
         <StackPanel HorizontalAlignment="Right" Margin="0,33,25,-33">
             <TextBlock Text="Liczba ścian"></TextBlock>
-            <Slider Value="4" Minimum="4" Maximum="10" Width="200" TickFrequency="1"></Slider>
+            <Slider x:Name="sciany" Value="4" Minimum="4" Maximum="10" Width="200" TickFrequency="1"></Slider>
             <TextBlock x:Name="iloscscian" Text="4" TextAlignment="Center"></TextBlock>
         </StackPanel>
 
