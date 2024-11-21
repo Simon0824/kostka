@@ -34,14 +34,22 @@ namespace kostka
             int scianyilosc = (int)sciany.Value;
 
 
-            kosteczkiwynik.Children.Clear(); 
+            kosteczkiwynik.Children.Clear();
             Random random = new Random(); // losowanie kości
             int[] rzuty = new int[kostkailosc];
             for (int i = 0; i < kostkailosc; i++)
             {
-                rzuty[i] = random.Next(1, kostkailosc + 1); 
+                rzuty[i] = random.Next(1, scianyilosc + 1);
                 kosteczkiwynik.Children.Add(Wyswietlaniezdjec(rzuty[i])); //wyświetlenie zdjęć dla odpowiednich liczb
             }
+            int rzutywynik = 0; //przypisanie początkowego wyniku rzutu
+
+            if (kostkailosc == 1)
+            {
+                rzutywynik = rzuty[0];
+            }
+            else
+            { 
             Dictionary<int, int> powtorzenia = new Dictionary<int, int>(); //liczenie powtórzeń za pomocą słownika
             foreach (int rzut in rzuty)
             {
@@ -50,12 +58,12 @@ namespace kostka
                 else
                     powtorzenia[rzut] = 1;
             }
-            int rzutywynik = 0; //przypisanie początkowego wyniku rzutu
             foreach (var rzucik in powtorzenia) //sumowanie powtórzeń
             {
                 if (rzucik.Value > 1)
                     rzutywynik += rzucik.Key * rzucik.Value;
             }
+        }
             wynikrzutu.Text = rzutywynik.ToString(); //liczenie punktów rzutu oraz ogólnych
             ogolnywynik += rzutywynik;
             wynikogolny.Text = ogolnywynik.ToString();
@@ -66,6 +74,7 @@ namespace kostka
         {
             wynikrzutu.Text = "0"; //resetowanie wyników oraz wartości
             wynikogolny.Text = "0";
+            ogolnywynik = 0;
             kostki.Value = 0;
             sciany.Value = 0;
             kosteczkiwynik.Children.Clear();
