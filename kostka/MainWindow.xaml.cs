@@ -34,9 +34,20 @@ namespace kostka
                 rzuty[i] = random.Next(1, scianyilosc + 1);
                 kosteczkiwynik.Children.Add(wyswietlaniezdjec(rzuty[i]));
             }
-
-            int rzutywynik = rzuty.Sum();
-
+            Dictionary <int, int> powtorzenia = new Dictionary<int, int>();
+            foreach(int rzut in rzuty)
+            {
+                if (powtorzenia.ContainsKey(rzut))
+                    powtorzenia[rzut]++;
+                else
+                    powtorzenia[rzut] = 1;
+            }
+            int rzutywynik = 0;
+            foreach(var rzucik in powtorzenia)
+            {
+                if (rzucik.Value > 1)
+                    rzutywynik += rzucik.Key * rzucik.Value;
+            }
             wynikrzutu.Text = rzutywynik.ToString();
             ogolnywynik += rzutywynik;
             wynikogolny.Text = ogolnywynik.ToString();
